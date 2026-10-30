@@ -49,7 +49,8 @@ Third-Semester-Baraka-2026---Data-Science/
 ├── README.md                                                                        # Comprehensive portfolio documentation
 ├── requirements.txt                                                                 # Reproducible Python dependencies
 ├── Resource Allocation.png                                                          # Exported Resource Allocation & Title I Audit visual artifact
-├── Second Live Session - Business Value of Data Visualization for ML.ipynb          # Live Session 2: Business-Valued ML, Lever Discovery & $50M Policy Audit
+├── Second Live Session - Business Value of Data Visualization for ML.ipynb          # Live Session 2 (Part 1): Phase 1 Resource Allocation & $50M Policy Audit
+├── Second Live Session - Business Value of Data Visualization for ML Cont.ipynb     # Live Session 2 (Part 2): Business Levers & Collinearity Elimination
 ├── us_education_system_data_dictionary.md                                           # 35-variable metadata schema & documentation
 └── us_education_system_dataset.csv                                                  # Modeled dataset (5,000 records × 35 features)
 ```
@@ -60,10 +61,10 @@ Third-Semester-Baraka-2026---Data-Science/
 
 | Session / Milestone | Module Focus | Core Deliverables / Artifacts | Status |
 | :--- | :--- | :--- | :---: |
-| **Live Session 01 (Part 1)** | **Introduction to Visualization for ML** | Univariate, Bivariate & Multivariate EDA on institutional data; skewness & interaction analysis | ✅ Completed |
-| **Live Session 01 (Part 2)** | **ML Visualization Continuation: Diagnostics & Dimensionality Reduction** | Correlation Matrix ([`corr_matrix.png`](./corr_matrix.png)), Random Forest Classifier ([`Confusion Matrix.png`](./Confusion%20Matrix.png)), & 2D PCA Embeddings ([`2D PCA Projection.png`](./2D%20PCA%20Projection.png)) | ✅ Completed |
-| **Live Session 02 (Part 1)** | **Business Value of Data Visualization for ML: Phase 1 Audit** | Advising State Dept of Ed on $50M Math Intervention; Spending Distribution Skew & Title I Boxplot Audit ([`Resource Allocation.png`](./Resource%20Allocation.png)); 3-Phase Business ML Framework | ✅ Completed |
-| **Live Session 02 (Part 2)** | **Business Lever Discovery, Collinearity Audit & Policy Stratification** | Primary Performance Driver Matrix ([`corr_matrix_features.png`](./corr_matrix_features.png)) & 4D Business Lever Bubble Charts by Governance ([`Business Lever Analysis.png`](./Business%20Lever%20Analysis.png)) and Title I Tier ([`Business Lever Analysis - Title Staus.png`](./Business%20Lever%20Analysis%20-%20Title%20Staus.png)) | ✅ Completed |
+| **Live Session 01 (Part 1)** | **Introduction to Visualization for ML** | Univariate, Bivariate & Multivariate EDA on institutional data; skewness & interaction analysis ([`First Live Session Introduction to Visualization for ML.ipynb`](First%20Live%20Session%20Introduction%20to%20Visualization%20for%20ML.ipynb)) | ✅ Completed |
+| **Live Session 01 (Part 2)** | **ML Visualization Continuation: Diagnostics & Dimensionality Reduction** | Correlation Matrix ([`corr_matrix.png`](./corr_matrix.png)), Random Forest Classifier ([`Confusion Matrix.png`](./Confusion%20Matrix.png)), & 2D PCA Embeddings ([`2D PCA Projection.png`](./2D%20PCA%20Projection.png)) ([`First Live Session Introduction to Visualization for ML - Continuation.ipynb`](First%20Live%20Session%20Introduction%20to%20Visualization%20for%20ML%20-%20Continuation.ipynb)) | ✅ Completed |
+| **Live Session 02 (Part 1)** | **Business Value of Data Visualization for ML: Phase 1 Audit** | Advising State Dept of Ed on $50M Math Intervention; Spending Distribution Skew & Title I Boxplot Audit ([`Resource Allocation.png`](./Resource%20Allocation.png), [`Second Live Session - Business Value of Data Visualization for ML.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML.ipynb)) | ✅ Completed |
+| **Live Session 02 (Part 2)** | **Business Lever Discovery, Collinearity Audit & Policy Stratification** | 4D Business Lever Bubble Charts by Governance ([`Business Lever Analysis.png`](./Business%20Lever%20Analysis.png)) and Title I Tier ([`Business Lever Analysis - Title Staus.png`](./Business%20Lever%20Analysis%20-%20Title%20Staus.png)), & Primary Performance Driver Matrix ([`corr_matrix_features.png`](./corr_matrix_features.png)) ([`Second Live Session - Business Value of Data Visualization for ML Cont.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML%20Cont.ipynb)) | ✅ Completed |
 | **Module 02** *(Upcoming)* | **Feature Engineering & Preprocessing** | Advanced scaling, categorical encodings, outlier treatments, imputation & feature construction | ⏳ Scheduled |
 | **Module 03** *(Upcoming)* | **Supervised Learning: Regression** | Predictive modeling for continuous academic outcomes (`graduation_rate_pct`, test scores) | ⏳ Scheduled |
 | **Module 04** *(Upcoming)* | **Supervised Learning: Classification** | Classification algorithms (Logistic Regression, Tree Ensembles, SVMs) for school risk tiers | ⏳ Scheduled |
@@ -73,8 +74,10 @@ Third-Semester-Baraka-2026---Data-Science/
 
 ## 🔬 Activity Spotlight: Live Session 02 — Business Value of Data Visualization for ML
 
-*Notebook:* [`Second Live Session - Business Value of Data Visualization for ML.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML.ipynb)  
-*Visual Artifacts:* [`Resource Allocation.png`](./Resource%20Allocation.png) | [`corr_matrix_features.png`](./corr_matrix_features.png) | [`Business Lever Analysis.png`](./Business%20Lever%20Analysis.png) | [`Business Lever Analysis - Title Staus.png`](./Business%20Lever%20Analysis%20-%20Title%20Staus.png)
+*Notebooks:*  
+- **Part 1:** [`Second Live Session - Business Value of Data Visualization for ML.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML.ipynb) *(Steps 1–2: Environment Setup & Resource Allocation Audit)*  
+- **Part 2 (Continuation):** [`Second Live Session - Business Value of Data Visualization for ML Cont.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML%20Cont.ipynb) *(Steps 3–4: Discovering Business Levers & Eliminating Redundant Features)*  
+*Visual Artifacts:* [`Resource Allocation.png`](./Resource%20Allocation.png) | [`Business Lever Analysis.png`](./Business%20Lever%20Analysis.png) | [`Business Lever Analysis - Title Staus.png`](./Business%20Lever%20Analysis%20-%20Title%20Staus.png) | [`corr_matrix_features.png`](./corr_matrix_features.png)
 
 ### 1. The Core Problem: Why Business Leaders Don't Buy "Black Boxes"
 - **Accuracy Alone is Not Enough:** Presenting a 95% model accuracy fails to convince executive stakeholders if they cannot understand *why* the model makes specific recommendations.
@@ -324,9 +327,10 @@ jupyter notebook
 ```
 
 Open any of the interactive notebooks to explore the workflows:
-- [`First Live Session Introduction to Visualization for ML.ipynb`](First%20Live%20Session%20Introduction%20to%20Visualization%20for%20ML.ipynb) — *Part 1: Univariate, Bivariate & Multivariate EDA*
-- [`First Live Session Introduction to Visualization for ML - Continuation.ipynb`](First%20Live%20Session%20Introduction%20to%20Visualization%20for%20ML%20-%20Continuation.ipynb) — *Part 2: Correlation Matrices, Random Forest Diagnostics & 2D PCA Projections*
-- [`Second Live Session - Business Value of Data Visualization for ML.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML.ipynb) — *Live Session 2: Business-Valued ML, Financial Audit & $50M Policy Intervention*
+- [`First Live Session Introduction to Visualization for ML.ipynb`](First%20Live%20Session%20Introduction%20to%20Visualization%20for%20ML.ipynb) — *Live Session 1 (Part 1): Univariate, Bivariate & Multivariate EDA*
+- [`First Live Session Introduction to Visualization for ML - Continuation.ipynb`](First%20Live%20Session%20Introduction%20to%20Visualization%20for%20ML%20-%20Continuation.ipynb) — *Live Session 1 (Part 2): Correlation Matrices, Random Forest Diagnostics & 2D PCA Projections*
+- [`Second Live Session - Business Value of Data Visualization for ML.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML.ipynb) — *Live Session 2 (Part 1): Business-Valued ML Framework, Financial Audit & $50M Policy Intervention*
+- [`Second Live Session - Business Value of Data Visualization for ML Cont.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML%20Cont.ipynb) — *Live Session 2 (Part 2): Business Lever Discovery (4D Scatterplots) & Eliminating Redundant Features (Collinearity Matrix)*
 
 ---
 
