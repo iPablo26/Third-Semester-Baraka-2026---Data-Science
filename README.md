@@ -41,9 +41,12 @@ Third-Semester-Baraka-2026---Data-Science/
 ├── 2D PCA Projection.png                                                            # Exported 2D PCA projection visual artifact
 ├── Business Lever Analysis - Title Staus.png                                        # Exported 4D Business Lever Bubble Plot (by Title I Status)
 ├── Business Lever Analysis.png                                                      # Exported 4D Business Lever Bubble Plot (by Governance Control)
+├── Categories of ML Models.jpeg                                                     # Architectural taxonomy of Supervised vs. Unsupervised ML models
 ├── Confusion Matrix.png                                                             # Exported Random Forest Confusion Matrix heatmap
 ├── corr_matrix.png                                                                  # Exported 9-feature Correlation Matrix (Session 1: Attendance)
 ├── corr_matrix_features.png                                                         # Exported 9-feature Correlation Matrix (Session 2: Broadband & Drivers)
+├── Evolution of ML.jpeg                                                             # Historical progression: Symbolic AI -> Statistical ML -> Python Ecosystem
+├── Feature and Target.jpeg                                                          # Scikit-Learn tabular data representation: Features Matrix (X) & Target (y)
 ├── First Live Session Introduction to Visualization for ML.ipynb                    # Live Session 1 (Part 1): Univariate & Multivariate EDA
 ├── First Live Session Introduction to Visualization for ML - Continuation.ipynb       # Live Session 1 (Part 2): Correlation, Random Forest & PCA
 ├── README.md                                                                        # Comprehensive portfolio documentation
@@ -51,6 +54,7 @@ Third-Semester-Baraka-2026---Data-Science/
 ├── Resource Allocation.png                                                          # Exported Resource Allocation & Title I Audit visual artifact
 ├── Second Live Session - Business Value of Data Visualization for ML.ipynb          # Live Session 2 (Part 1): Phase 1 Resource Allocation & $50M Policy Audit
 ├── Second Live Session - Business Value of Data Visualization for ML Cont.ipynb     # Live Session 2 (Part 2): Business Levers & Collinearity Elimination
+├── Third Session - Introduction to ML.ipynb                                         # Live Session 3: ML Evolution, Model Taxonomy, Estimator API & Preprocessing
 ├── us_education_system_data_dictionary.md                                           # 35-variable metadata schema & documentation
 └── us_education_system_dataset.csv                                                  # Modeled dataset (5,000 records × 35 features)
 ```
@@ -65,10 +69,73 @@ Third-Semester-Baraka-2026---Data-Science/
 | **Live Session 01 (Part 2)** | **ML Visualization Continuation: Diagnostics & Dimensionality Reduction** | Correlation Matrix ([`corr_matrix.png`](./corr_matrix.png)), Random Forest Classifier ([`Confusion Matrix.png`](./Confusion%20Matrix.png)), & 2D PCA Embeddings ([`2D PCA Projection.png`](./2D%20PCA%20Projection.png)) ([`First Live Session Introduction to Visualization for ML - Continuation.ipynb`](First%20Live%20Session%20Introduction%20to%20Visualization%20for%20ML%20-%20Continuation.ipynb)) | ✅ Completed |
 | **Live Session 02 (Part 1)** | **Business Value of Data Visualization for ML: Phase 1 Audit** | Advising State Dept of Ed on $50M Math Intervention; Spending Distribution Skew & Title I Boxplot Audit ([`Resource Allocation.png`](./Resource%20Allocation.png), [`Second Live Session - Business Value of Data Visualization for ML.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML.ipynb)) | ✅ Completed |
 | **Live Session 02 (Part 2)** | **Business Lever Discovery, Collinearity Audit & Policy Stratification** | 4D Business Lever Bubble Charts by Governance ([`Business Lever Analysis.png`](./Business%20Lever%20Analysis.png)) and Title I Tier ([`Business Lever Analysis - Title Staus.png`](./Business%20Lever%20Analysis%20-%20Title%20Staus.png)), & Primary Performance Driver Matrix ([`corr_matrix_features.png`](./corr_matrix_features.png)) ([`Second Live Session - Business Value of Data Visualization for ML Cont.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML%20Cont.ipynb)) | ✅ Completed |
-| **Module 02** *(Upcoming)* | **Feature Engineering & Preprocessing** | Advanced scaling, categorical encodings, outlier treatments, imputation & feature construction | ⏳ Scheduled |
-| **Module 03** *(Upcoming)* | **Supervised Learning: Regression** | Predictive modeling for continuous academic outcomes (`graduation_rate_pct`, test scores) | ⏳ Scheduled |
+| **Live Session 03** | **Introduction to Machine Learning & The Scikit-Learn Estimator API** | Paradigm shift from Symbolic AI to ML ([`Evolution of ML.jpeg`](./Evolution%20of%20ML.jpeg)), ML Taxonomy ([`Categories of ML Models.jpeg`](./Categories%20of%20ML%20Models.jpeg)), $X$/$y$ Representation ([`Feature and Target.jpeg`](./Feature%20and%20Target.jpeg)), 5-Step Estimator API & Feature Processing ([`Third Session - Introduction to ML.ipynb`](Third%20Session%20-%20Introduction%20to%20ML.ipynb)) | ✅ Completed |
+| **Module 03** *(Upcoming)* | **Supervised Learning: Regression** | Predictive modeling for continuous academic outcomes (`math_proficiency_pct`, `graduation_rate_pct`) | ⏳ Scheduled |
 | **Module 04** *(Upcoming)* | **Supervised Learning: Classification** | Classification algorithms (Logistic Regression, Tree Ensembles, SVMs) for school risk tiers | ⏳ Scheduled |
 | **Module 05** *(Upcoming)* | **Model Evaluation & Diagnostics** | ROC-AUC, Precision-Recall, Calibration Curves, Bias vs. Variance tradeoff & Cost Curves | ⏳ Scheduled |
+
+---
+
+## 🔬 Activity Spotlight: Live Session 03 — Introduction to Machine Learning & The Scikit-Learn Estimator API
+
+*Notebook:* [`Third Session - Introduction to ML.ipynb`](Third%20Session%20-%20Introduction%20to%20ML.ipynb)  
+*Visual Artifacts:* [`Evolution of ML.jpeg`](./Evolution%20of%20ML.jpeg) | [`Categories of ML Models.jpeg`](./Categories%20of%20ML%20Models.jpeg) | [`Feature and Target.jpeg`](./Feature%20and%20Target.jpeg)
+
+### 1. Paradigm Shift: Traditional Software Engineering vs. Machine Learning
+- **Traditional Programming (`Data + Handwritten Rules -> Output`):** Engineers explicitly code deterministic `IF/ELSE` rules. While effective for deterministic systems, hardcoded rules become brittle and fail to scale in complex real-world domains such as predicting student academic outcomes or detecting financial and identity fraud.
+- **Machine Learning (`Data + Known Outputs -> Learned Rules`):** Algorithms ingest historical observations alongside known outcomes to automatically infer generalizable mathematical mappings and predictive patterns.
+
+![Evolution of Machine Learning](./Evolution%20of%20ML.jpeg)
+
+| Historical Era | Timeframe | Defining Characteristics & Tooling |
+| :--- | :---: | :--- |
+| **1. Early AI & Rules** | `1950s – 1980s` | Symbolic logic, expert systems, hardcoded `IF/ELSE` heuristics, fragile scaling on noisy real-world data. |
+| **2. Statistical ML** | `1990s – 2000s` | Probabilistic models, statistical pattern detection, and data-driven function approximation. |
+| **3. Python Ecosystem** | `2010s – Present` | Vectorized `NumPy` & `Pandas` arrays, unified `Scikit-Learn` Estimator API, and reproducible production ML pipelines. |
+
+---
+
+### 2. Machine Learning in the Data Science Workflow & Model Taxonomy
+- **Data Science Intersection:** Sits at the confluence of **programming skills**, **mathematics & statistical rigor**, and **enterprise domain knowledge**.
+- **Machine Learning as the Computational Engine:** Powers automated pattern discovery, structural grouping, and out-of-sample predictive inference across two primary learning paradigms:
+
+![Categories of Machine Learning Models](./Categories%20of%20ML%20Models.jpeg)
+
+1. **Supervised Learning (Models features $X$ to known labels $y$):**
+   - **Classification (Discrete $y$):** Assigning observations into finite categories (e.g., classifying schools into *Below Median* vs. *Above Median* proficiency tiers).
+   - **Regression (Continuous $y$):** Predicting continuous numerical quantities (e.g., forecasting exact `math_proficiency_pct` or `graduation_rate_pct`).
+2. **Unsupervised Learning (Models features $X$ without labels $y$):**
+   - **Clustering (Groupings):** Discovering natural institutional archetypes or peer school segments.
+   - **Dimensionality Reduction:** Compressing high-dimensional feature spaces into orthogonal latent axes (e.g., `2D PCA` projection).
+
+---
+
+### 3. Scikit-Learn Data Representation & The 5-Step Estimator Workflow
+To interface with Scikit-Learn's unified Estimator API, tabular institutional datasets are decomposed into two distinct mathematical structures:
+- **Features Matrix ($X$):** A 2D matrix of shape `(n_samples, n_features)` containing the input predictors (e.g., `[Spending, Ratio, Lunch%]`).
+- **Target Vector ($y$):** A 1D vector of length `(n_samples,)` containing the dependent outcome variable to be predicted (e.g., `[Proficiency]`).
+
+![Scikit-Learn Features Matrix (X) and Target Vector (y)](./Feature%20and%20Target.jpeg)
+
+#### 🔄 The 5-Step Scikit-Learn Estimator Workflow
+```mermaid
+flowchart LR
+    S1["1. Choose Model Class"] --> S2["2. Choose Hyperparameters"]
+    S2 --> S3["3. Format Data (X, y)"]
+    S3 --> S4["4. Fit Model: model.fit(X, y)"]
+    S4 --> S5["5. Apply Model: model.predict(X_new)"]
+```
+
+---
+
+### 4. Real-World Case Study: Education Performance Prediction Pipeline Setup
+Applying this workflow to [`us_education_system_dataset.csv`](us_education_system_dataset.csv) (`5,000` institutions), the pipeline isolates high-signal predictors identified during our Phase 2 business lever audit and prepares them for Scikit-Learn transformers (`SimpleImputer` and `OneHotEncoder`):
+
+| Pipeline Role | Variable Specification | Selected Columns | Preprocessing Strategy |
+| :--- | :--- | :--- | :--- |
+| **Numeric Predictors ($X_{\text{num}}$)** | `numeric_features` | `per_pupil_expenditure_usd`, `student_teacher_ratio`, `percent_free_reduced_lunch` | `SimpleImputer` (median/mean imputation) + scaling |
+| **Categorical Predictors ($X_{\text{cat}}$)** | `categorical_features` | `title_i_status`, `control` | `OneHotEncoder` (orthogonal binary indicator expansion) |
+| **Supervised Target ($y$)** | `target_col` | `math_proficiency_pct` | Target hygiene via `perf_data.dropna(subset=[target_col]).copy()` |
 
 ---
 
@@ -290,7 +357,7 @@ The primary dataset modeled in this repository encapsulates **5,000 educational 
 - **Core Language:** Python 3.10+
 - **Environment:** Jupyter Notebook / Google Colab / VS Code
 - **Data Manipulation:** `pandas`, `numpy`, `scipy`
-- **Machine Learning & Dimensionality Reduction:** `scikit-learn` (`RandomForestClassifier`, `PCA`, `StandardScaler`, `confusion_matrix`)
+- **Machine Learning & Dimensionality Reduction:** `scikit-learn` (`RandomForestClassifier`, `PCA`, `StandardScaler`, `OneHotEncoder`, `SimpleImputer`, `confusion_matrix`)
 - **Statistical Visualization:** `matplotlib`, `seaborn`
 - **Version Control:** Git & GitHub
 
@@ -331,6 +398,7 @@ Open any of the interactive notebooks to explore the workflows:
 - [`First Live Session Introduction to Visualization for ML - Continuation.ipynb`](First%20Live%20Session%20Introduction%20to%20Visualization%20for%20ML%20-%20Continuation.ipynb) — *Live Session 1 (Part 2): Correlation Matrices, Random Forest Diagnostics & 2D PCA Projections*
 - [`Second Live Session - Business Value of Data Visualization for ML.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML.ipynb) — *Live Session 2 (Part 1): Business-Valued ML Framework, Financial Audit & $50M Policy Intervention*
 - [`Second Live Session - Business Value of Data Visualization for ML Cont.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML%20Cont.ipynb) — *Live Session 2 (Part 2): Business Lever Discovery (4D Scatterplots) & Eliminating Redundant Features (Collinearity Matrix)*
+- [`Third Session - Introduction to ML.ipynb`](Third%20Session%20-%20Introduction%20to%20ML.ipynb) — *Live Session 3: Evolution of ML, Model Taxonomy, 5-Step Scikit-Learn Estimator API & Feature Processing*
 
 ---
 
