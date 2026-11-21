@@ -1,5 +1,5 @@
 # 🎓 AltSchool Africa: Data Science Portfolio — Third Semester
-### 🚀 Baraka 2026 Cohort | Machine Learning Workflows, Visual Diagnostics & Business Value
+### 🚀 Baraka 2026 Cohort | Machine Learning Workflows, Visual Diagnostics, Business Value & Time Series Modeling
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter&logoColor=white)](https://jupyter.org/)
@@ -57,6 +57,7 @@ Third-Semester-Baraka-2026---Data-Science/
 ├── Resource Allocation.png                                                          # Exported Resource Allocation & Title I Audit visual artifact
 ├── Second Live Session - Business Value of Data Visualization for ML.ipynb          # Live Session 2 (Part 1): Phase 1 Resource Allocation & $50M Policy Audit
 ├── Second Live Session - Business Value of Data Visualization for ML Cont.ipynb     # Live Session 2 (Part 2): Business Levers & Collinearity Elimination
+├── Seventh Live Session - Time Series Modeling.ipynb                                # Live Session 7: Time Series Foundations, NOAA Sentinel Cleaning & DatetimeIndex
 ├── Third Session - Introduction to ML.ipynb                                         # Live Session 3 (Part 1): ML Evolution, Taxonomy, Estimator API & Setup
 ├── Third Session Introductionn to ML Cont.ipynb                                     # Live Session 3 (Part 2): Imputation, OHE, Linear Regression & Random Forest
 ├── us_education_system_data_dictionary.md                                           # 35-variable metadata schema & documentation
@@ -75,10 +76,52 @@ Third-Semester-Baraka-2026---Data-Science/
 | **Live Session 02 (Part 2)** | **Business Lever Discovery, Collinearity Audit & Policy Stratification** | 4D Business Lever Bubble Charts by Governance ([`Business Lever Analysis.png`](./Business%20Lever%20Analysis.png)) and Title I Tier ([`Business Lever Analysis - Title Staus.png`](./Business%20Lever%20Analysis%20-%20Title%20Staus.png)), & Primary Performance Driver Matrix ([`corr_matrix_features.png`](./corr_matrix_features.png)) ([`Second Live Session - Business Value of Data Visualization for ML Cont.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML%20Cont.ipynb)) | ✅ Completed |
 | **Live Session 03 (Part 1)** | **Introduction to Machine Learning & The Scikit-Learn Estimator API** | Paradigm shift from Symbolic AI to ML ([`Evolution of ML.jpeg`](./Evolution%20of%20ML.jpeg)), ML Taxonomy ([`Categories of ML Models.jpeg`](./Categories%20of%20ML%20Models.jpeg)), $X$/$y$ Representation ([`Feature and Target.jpeg`](./Feature%20and%20Target.jpeg)), & Pipeline Target Hygiene ([`Third Session - Introduction to ML.ipynb`](Third%20Session%20-%20Introduction%20to%20ML.ipynb)) | ✅ Completed |
 | **Live Session 03 (Part 2)** | **Tabular Preprocessing, Linear Regression & Random Forest Walkthroughs** | Median Imputation (`SimpleImputer`), Dummy-Trap-Free Encoding (`OneHotEncoder(drop='first')`), `(5000, 10)` Matrix Assembly, Continuous `LinearRegression` (`MSE = 172.10`, `R² = 0.36`), & Ex-Ante `RandomForestClassifier` (`~70.0%` Accuracy) ([`Third Session Introductionn to ML Cont.ipynb`](Third%20Session%20Introductionn%20to%20ML%20Cont.ipynb)) | ✅ Completed |
-| **Data Asset Staging** | **NOAA GSOD Meteorological Station Dataset (2025)** | `1,000` daily station observations × `33` features across `205` stations (`2025-01-01` – `2025-08-23`) with sensor missingness sentinels (`999.9` / `9999.9`) staged for upcoming ML labs ([`nooa -1.csv`](nooa%20-1.csv)) | 📦 Staged |
-| **Module 03** *(Upcoming)* | **Supervised Learning: Advanced Regression & Regularization** | Ridge/Lasso regularization, non-linear regressors, residual diagnostics & meteorological/academic forecasting | ⏳ Scheduled |
-| **Module 04** *(Upcoming)* | **Supervised Learning: Classification** | Classification algorithms (Logistic Regression, Tree Ensembles, SVMs) for school risk tiers & weather events | ⏳ Scheduled |
-| **Module 05** *(Upcoming)* | **Model Evaluation & Diagnostics** | ROC-AUC, Precision-Recall, Calibration Curves, Bias vs. Variance tradeoff & Cost Curves | ⏳ Scheduled |
+| **Live Session 07** | **Time Series Modeling Foundations & NOAA Meteorological Pipeline** | Chronological Dependence vs. i.i.d. ML, Additive Decomposition ($\text{Trend} + \text{Seasonality} + \text{Noise}$), Pandas `DatetimeIndex` Toolkit, NOAA Sentinel Cleaning (`9999.9` $\rightarrow$ `NaN`), & Daily Station Aggregation (`239` days: `2025-01-01` – `2025-08-28`) ([`Seventh Live Session - Time Series Modeling.ipynb`](Seventh%20Live%20Session%20-%20Time%20Series%20Modeling.ipynb), [`nooa -1.csv`](nooa%20-1.csv)) | ✅ Completed |
+| **Upcoming Modules** | **Forecasting, Regularization & Model Evaluation** | Time Series Resampling/Rolling/Forecasting (ARIMA/Lag ML), Regularized Regression, ROC-AUC/PR & Cost Curves | ⏳ Scheduled |
+
+---
+
+## 🔬 Activity Spotlight: Live Session 07 — Time Series Modeling Foundations & Meteorological Data Pipeline
+
+*Notebook:* [`Seventh Live Session - Time Series Modeling.ipynb`](Seventh%20Live%20Session%20-%20Time%20Series%20Modeling.ipynb)  
+*Dataset Schema:* NOAA Global Summary of the Day (`5,000` station records × `33` features in Colab session; reproducible `1,000`-record local repo sample in [`nooa -1.csv`](nooa%20-1.csv))
+
+### 1. Why Time Series Breaks Standard i.i.d. Machine Learning Assumptions
+Standard tabular machine learning assumes observations are **independent and identically distributed (i.i.d.)**, meaning random row shuffling prior to train/test splitting is valid. In **Time Series Modeling**, shuffling destroys temporal structure and introduces severe **look-ahead data leakage** because causality flows strictly forward in time:
+
+```mermaid
+flowchart LR
+    T2["t - 2 (Jan 1): Historical State"] --> T1["t - 1 (Jan 2): Lagged Signal"]
+    T1 --> T0["t (Jan 3): Current Observation"]
+    T0 --> Tf["t + 1 (Jan 4): Out-of-Time Forecast"]
+```
+
+- **Enterprise Decision Impact:**
+  - **Energy & Utilities:** Grid operators forecast hourly electricity load to balance generation capacity and prevent cascading blackouts.
+  - **Supply Chain & Retail:** Demand planners model day-of-week dynamics (Saturday vs. Tuesday) and pre-holiday surges to prevent high-demand stockouts.
+
+### 2. Anatomy of a Time Series & The Python Temporal Toolkit
+Every observed chronological series can be conceptually decomposed into three structural layers:
+
+$$\text{Observed Time Series} = \text{Trend} + \text{Seasonality} + \text{Noise}$$
+
+| Structural Component / Pandas Primitive | Core Function & Role in Time Series ML |
+| :--- | :--- |
+| **Long-Term Trend** | Gradual directional drift over extended horizons (e.g., seasonal warming across `Jan–Aug`). |
+| **Cyclical Seasonality** | Repeating deterministic patterns at fixed intervals (diurnal, weekly, annual cycles). |
+| **Random Noise** | Unpredictable stochastic fluctuations / weather shocks around systematic structure. |
+| `pd.to_datetime()` & `DatetimeIndex` | Parses raw date strings into optimized NumPy `datetime64` timestamps enabling native calendar slicing. |
+| `resample()` vs. `asfreq()` | Downsamples/upsamples irregular logs into regular calendar buckets (`D`, `W`, `M`) or surfaces missing calendar days explicitly. |
+| `shift()` & `rolling()` | Engineers autoregressive lag features (`t - 1`, `t - 7`) and moving-window statistics (e.g., 7-day moving averages) strictly from past values. |
+
+### 3. Hands-On NOAA Meteorological Pipeline & Data-Quality Diagnostics
+Applying the toolkit to **`5,000` NOAA GSOD station observations** (`33` columns), the notebook builds a clean daily chronological frame (`daily_weather`):
+
+1. **Sentinel Sanitization (`9999.9` $\rightarrow$ `NaN`):** Replaced NOAA `9999.9` missing-value flags across `['dewp', 'slp', 'stp', 'visib', 'wdsp', 'mxpsd', 'gust', 'prcp', 'sndp']`, uncovering **`235` missing dew-point (`dewp`)** readings (`4,765` valid) and **`1,550` missing sea-level pressure (`slp`)** readings (`3,450` valid).
+2. **Chronological Indexing & Cross-Station Aggregation:** Converted `date` via `pd.to_datetime()` and aggregated station-level readings into `daily_weather = weather_data.groupby('date')[['temp', 'dewp', 'wdsp']].mean()`, yielding **`239` daily observations** spanning **`2025-01-01` to `2025-08-28`**.
+3. **Diagnostic Findings Flagged for Forecasting Continuation:**
+   - **Multi-Code Sentinel Hierarchy (`999.9` & `99.99`):** Inspecting `daily_weather` reveals residual `999.9` missingness codes in `wdsp` (e.g., `wdsp = 999.90` on `2025-08-28`, pulling `2025-01-03` daily wind mean up to `162.64` knots) as well as `visib`, `gust`, and `sndp` (plus `99.99` in `prcp`). Sanitizing all three NOAA sentinel tiers (`9999.9`, `999.9`, `99.99`) is a mandatory prerequisite before lag/rolling feature engineering.
+   - **Calendar Continuity Gap (`239` Recorded Days in a `240`-Day Span):** `2025-08-25` is absent between `2025-08-24` and `2025-08-26`, demonstrating why explicit calendar regularization (`asfreq('D')` + forward/interpolated imputation) is essential before applying fixed-step `.shift(1)` or `.rolling(7)` transformations.
 
 ---
 
@@ -391,7 +434,7 @@ The primary institutional dataset modeled across Live Sessions 01–03 encapsula
 > 📖 *For complete field descriptions, allowable ranges, and data types, refer to the full [Data Dictionary Documentation](us_education_system_data_dictionary.md).*
 
 ### 2. NOAA Global Summary of the Day Meteorological Dataset ([`nooa -1.csv`](nooa%20-1.csv))
-Staged for upcoming environmental data hygiene, feature engineering, regression, and imbalanced event classification workflows, this dataset contains **1,000 daily weather-station records** across **205 reporting stations** (`2025-01-01` to `2025-08-23`), spanning **33 meteorological dimensions**.
+Utilized in **Live Session 07 (Time Series Modeling)** for chronological `DatetimeIndex` engineering, sentinel missingness auditing, and daily meteorological aggregation (with a `5,000`-row superset used in Google Colab and this `1,000`-row, `205`-station reproducible sample spanning `2025-01-01` to `2025-08-23` bundled locally across **33 meteorological dimensions**).
 
 | Domain Category | Representative Variables | Analytical & Data-Hygiene Significance |
 | :--- | :--- | :--- |
@@ -406,7 +449,7 @@ Staged for upcoming environmental data hygiene, feature engineering, regression,
 
 - **Core Language:** Python 3.10+
 - **Environment:** Jupyter Notebook / Google Colab / VS Code
-- **Data Manipulation:** `pandas`, `numpy`, `scipy`
+- **Data Manipulation & Time Series:** `pandas` (`DatetimeIndex`, `to_datetime`, `resample`, `asfreq`, `shift`, `rolling`), `numpy` (`datetime64`), `scipy`
 - **Machine Learning & Dimensionality Reduction:** `scikit-learn` (`LinearRegression`, `RandomForestClassifier`, `PCA`, `StandardScaler`, `OneHotEncoder`, `SimpleImputer`, `train_test_split`, `mean_squared_error`, `r2_score`, `accuracy_score`, `classification_report`, `confusion_matrix`)
 - **Statistical Visualization:** `matplotlib`, `seaborn`
 - **Version Control:** Git & GitHub
@@ -450,6 +493,7 @@ Open any of the interactive notebooks to explore the workflows:
 - [`Second Live Session - Business Value of Data Visualization for ML Cont.ipynb`](Second%20Live%20Session%20-%20Business%20Value%20of%20Data%20Visualization%20for%20ML%20Cont.ipynb) — *Live Session 2 (Part 2): Business Lever Discovery (4D Scatterplots) & Eliminating Redundant Features (Collinearity Matrix)*
 - [`Third Session - Introduction to ML.ipynb`](Third%20Session%20-%20Introduction%20to%20ML.ipynb) — *Live Session 3 (Part 1): Evolution of ML, Model Taxonomy, 5-Step Scikit-Learn Estimator API & Pipeline Setup*
 - [`Third Session Introductionn to ML Cont.ipynb`](Third%20Session%20Introductionn%20to%20ML%20Cont.ipynb) — *Live Session 3 (Part 2): Median Imputation, One-Hot Encoding, Supervised Linear Regression & Random Forest Classification*
+- [`Seventh Live Session - Time Series Modeling.ipynb`](Seventh%20Live%20Session%20-%20Time%20Series%20Modeling.ipynb) — *Live Session 7: Time Series Foundations, Additive Decomposition, NOAA Sentinel Cleaning & `DatetimeIndex` Aggregation*
 
 ---
 
